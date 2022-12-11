@@ -5,24 +5,26 @@
 
 ## 简单CSS教程
 
-先写CSS教程，只需要掌握class、id和父子选择器就可以，足够灵活使用CustonFilter这个插件。
+先写CSS教程，只需要掌握class、id和选择器就可以，足够灵活使用CustonFilter这个插件。
 
 ### 控制台以及html标签
 
-每个网页是由许多html元素组成的，所谓的html标签就是<body>、<div>等等以及内容。
+每个网页是由许多html元素组成的，所谓的html标签就是`<body>、<div>`等等以及内容。
+
+以  [虎扑-曼联专区](https://bbs.hupu.com/manutd)，这个页面为例，在Chrome浏览器中按下F12，打开控制台，选择元素这个tab页，里面的内容就是组成页面的html标签。
   
 ![demo](./无标题2.png)  
-  
-以虎扑-曼联专区这个页面为例，在Chrome浏览器中按下F12，打开控制台，选择元素这个tab页，里面的内容就是组成页面的html标签。
-![demo](./无标题3.png)    
+
 按下了控制台左上角画线①的那个按钮，当鼠标在页面移动时，下面控制台的当前元素就会切换成鼠标所在位置的标签。
+![demo](./无标题3.png)    
+
 现在鼠标选择了一条帖子，下面的当前元素变成了`<div class="post-title">`, 通常有许多帖子就会有许多相同的标签，只是内容不同，再往上级看，有个
 `<li class="bbs-sl-web-post-body">`,缩起来之后看到很多这个标签，在控制台按下delete删除这个标签之后，帖子也被删除，当然这个删除只是在我们本地页面的删除，
  F5刷新页面就又出来了，所以我们要屏蔽的主要标签就是这个`<li class="bbs-sl-web-post-body">`。
   
 ## html属性以及父子关系
 比如页面中的`<a href="/56894933.html" target="_blank" class="p-title" style="color:;font-style:normal">最强的三狮倒在了八强</a>`
-<a>就是标签，a标签，`<>`里面的href叫做属性，`href=`的后面叫做属性值。`<>`和`</>`的中间就是html内容。这个内容也可以是其他标签。
+<a>就是标签，a标签，`<>`里面的href叫做属性，`href=`的后面叫做属性值。`<>`和`</>`的中间`>最强的三狮倒在了八强`就是html内容。这个内容也可以是其他标签。
 这样就出现父子关系了。比如
  ```
   <div class="post-title">
@@ -51,11 +53,12 @@ class值可以有多个，用空格分隔，比如`<li class="bbs-sl-web-post-bo
 <div id="container">
     xxx
 </div>
+```
 属性名为id的值对应的选择器，用`#`加属性值来表示，比如上面的`#container`，一个页面内id的值不能重复。
 ### 同时选择器
 同时满足多个选择器的标签，多个选择器直接连起来
 比如`li.bbs-sl-web-post-body`,既是li标签，class元素又包含了bbs-sl-web-post-body
-## 父子选择器
+### 父子选择器
    ```
   <div class="post-title">
   <a href="/56894933.html" target="_blank" class="p-title" style="color:;font-style:normal">最强的三狮倒在了八强</a>
@@ -63,8 +66,10 @@ class值可以有多个，用空格分隔，比如`<li class="bbs-sl-web-post-bo
   </div>
   ```
 通过父子关系来更精确快速的定位，用空格表示父子关系，注意这里的父子关系包括儿子，孙子，上面div的儿子是a和span，div的孙子是span里的a和i。
-比如`div .p-title`选择了div内的第一个a标签。 
+比如`div .p-title`选择了div内的class名为p-title的标签，也就是`  <a href="/56894933.html" target="_blank" class="p-title" style="color:;font-style:normal">最强的三狮倒在了八强</a>`
 
+## CustomFilter配置指南
+  
 ![demo](./无标题.png)
 
 主要配置4个位置
@@ -76,5 +81,14 @@ class值可以有多个，用空格分隔，比如`<li class="bbs-sl-web-post-bo
 ③屏蔽关键词
 
 ④要搜索关键词的元素，一般情况下，Search Range和Elements to hide一样就可以，如果想提高运行效率，可以设置为Elements to hide的子标签。当在Search Range中查找到屏蔽词之后，在当前位置以及往上级找，找到Elements to hide，隐藏掉，屏蔽结束。
+
+## 手机浏览器使用指南
+
+chrome的手机浏览器不支持装插件，推荐几个其他的支持装插件的
+  
+1. Kiwi（谷歌商店下载）,我正在用，没什么问题。
+
+2. X浏览器，手机应用商店应该就可以
+
 
 
